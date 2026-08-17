@@ -1,281 +1,300 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B-Educ — Brand Guidelines & Charte Graphique</title>
-<meta name="description" content="Charte graphique officielle et principes de design de B-Educ. Directives de marque, logo, couleurs, typographies et composants UI.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B-Educ — Charte & Directives de Marque</title>
+  
+  <!-- Inter & Plus Jakarta Sans pour un rendu typographique très pro/naturel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
 
-<!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          'beduc-bg': '#fcfbf7',
-          'beduc-card': '#ffffff',
-          'beduc-teal': '#1d6b63',
-          'beduc-teal-dark': '#144c46',
-          'beduc-navy': '#0f212e',
-          'beduc-yellow': '#e5ad42',
-          'beduc-mint': '#dbeee8',
-          'beduc-mint-light': '#eef7f4',
-        },
-        fontFamily: {
-          display: ['"Space Grotesk"', 'sans-serif'],
-          body: ['"Inter"', 'sans-serif'],
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#1d6b63',
+              'teal-dark': '#154e48',
+              navy: '#0f212e',
+              yellow: '#e5ad42',
+              mint: '#dbeee8',
+              gray: '#64748b',
+              border: '#e2e8f0',
+              bgLight: '#f8fafc'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          }
         }
       }
     }
-  }
-</script>
+  </script>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & base propre */
+    body {
+      background-color: #ffffff;
+      color: #0f212e;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-<!-- AOS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-<!-- Lucide icons -->
-<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
-
-<style>
-  * { scroll-behavior: smooth; }
-  body {
-    background-color: #fcfbf7;
-    font-family: 'Inter', sans-serif;
-    color: #0f212e;
-  }
-  h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
-
-  .glass-card {
-    background: #ffffff;
-    border: 1px solid rgba(15, 33, 46, 0.08);
-    box-shadow: 0 10px 30px -10px rgba(15, 33, 46, 0.05);
-  }
-
-  .btn-teal {
-    background-color: #1d6b63;
-    color: #ffffff;
-    transition: all 0.25s ease;
-  }
-  .btn-teal:hover {
-    background-color: #144c46;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px -5px rgba(29, 107, 99, 0.3);
-  }
-
-  .toast {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .toast.show {
-    transform: translateY(0);
-    opacity: 1;
-  }
-</style>
+    /* Animation du Toast simple */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      transform: translateY(150%);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast.active {
+      transform: translateY(0);
+    }
+  </style>
 </head>
+<body class="bg-white text-brand-navy antialiased">
 
-<body class="font-body antialiased">
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 bg-white border-b border-slate-100 z-40">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="font-heading font-bold text-xl tracking-tight text-brand-navy flex items-center gap-1.5">
+        <span class="w-7 h-7 bg-brand-teal text-white rounded flex items-center justify-center text-sm font-bold">b</span>
+        <span>-educ</span>
+      </a>
 
-<!-- ============ NAVBAR ============ -->
-<header class="fixed top-0 inset-x-0 z-50 bg-[#fcfbf7]/80 backdrop-blur-md border-b border-slate-200/60">
-  <nav class="mx-auto max-w-6xl px-5 sm:px-6 flex items-center justify-between h-20">
-    <a href="#top" class="font-display text-2xl font-bold text-beduc-teal flex items-center gap-2">
-      <span class="bg-beduc-teal text-white p-1.5 rounded-lg text-lg leading-none">b</span>-educ
-    </a>
+      <!-- Navigation simple -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#palette" class="hover:text-brand-teal transition-colors">Couleurs</a>
+        <a href="#typographie" class="hover:text-brand-teal transition-colors">Typographie</a>
+        <a href="#composants" class="hover:text-brand-teal transition-colors">Composants UI</a>
+      </nav>
 
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-beduc-navy">
-      <a href="#brand" class="hover:text-beduc-teal transition">Marque</a>
-      <a href="#logo" class="hover:text-beduc-teal transition">Logo</a>
-      <a href="#couleurs" class="hover:text-beduc-teal transition">Couleurs</a>
-      <a href="#typographie" class="hover:text-beduc-teal transition">Typographie</a>
-      <a href="#ui" class="hover:text-beduc-teal transition">Composants UI</a>
+      <!-- Action -->
+      <a href="https://b-educ.com" target="_blank" rel="noopener" class="text-sm font-medium text-brand-teal hover:text-brand-teal-dark border border-brand-teal/20 hover:border-brand-teal px-4 py-2 rounded-lg transition-all">
+        Voir le site réel &rarr;
+      </a>
     </div>
+  </header>
 
-    <a href="https://b-educ.com" target="_blank" rel="noopener" class="btn-teal text-sm font-medium px-5 py-2.5 rounded-xl inline-flex items-center gap-2">
-      Visiter le site <i data-lucide="external-link" class="w-4 h-4"></i>
-    </a>
-  </nav>
-</header>
+  <main class="max-w-6xl mx-auto px-6">
 
-<!-- ============ HERO ============ -->
-<section id="top" class="pt-36 pb-20 px-5 sm:px-6">
-  <div class="max-w-4xl mx-auto text-center">
-    <div data-aos="fade-down" class="inline-flex items-center gap-2 bg-beduc-mint text-beduc-teal font-semibold rounded-full px-4 py-1.5 text-xs mb-6">
-      <span class="w-2 h-2 rounded-full bg-beduc-teal"></span>
-      Charte Graphique Officielle
-    </div>
-
-    <h1 data-aos="fade-up" data-aos-delay="100" class="font-display text-4xl sm:text-6xl font-bold text-beduc-navy leading-tight">
-      Apprends aujourd'hui. <br>
-      <span class="text-beduc-teal">Choisis demain.</span>
-    </h1>
-
-    <p data-aos="fade-up" data-aos-delay="200" class="mt-6 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-      Guide complet des règles visuelles, de la palette de couleurs, des typographies et de l'expérience utilisateur de B-Educ.
-    </p>
-
-    <div data-aos="fade-up" data-aos-delay="300" class="mt-8 flex flex-wrap items-center justify-center gap-4">
-      <a href="#couleurs" class="btn-teal font-medium px-6 py-3 rounded-xl text-sm">Voir la palette exacte</a>
-      <a href="#ui" class="bg-white border border-slate-200 text-beduc-navy font-medium px-6 py-3 rounded-xl text-sm hover:bg-slate-50 transition">Explorer les composants</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ COULEURS REELLES ============ -->
-<section id="couleurs" class="px-5 sm:px-6 py-16 bg-white border-y border-slate-200/60">
-  <div class="max-w-6xl mx-auto">
-    <div data-aos="fade-up" class="mb-12">
-      <div class="w-12 h-1 bg-beduc-yellow mb-3"></div>
-      <span class="text-beduc-teal text-xs font-bold uppercase tracking-widest">Couleurs Officielles</span>
-      <h2 class="font-display text-3xl font-bold text-beduc-navy mt-1">Palette Extraite du Site</h2>
-      <p class="text-slate-500 text-sm mt-2">Cliquez sur une carte pour copier le code HEX.</p>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-      <!-- Vert Teal -->
-      <div data-aos="zoom-in" onclick="copyColor('#1D6B63')" class="glass-card rounded-2xl p-4 cursor-pointer hover:border-beduc-teal transition group">
-        <div class="h-24 rounded-xl bg-[#1d6b63] mb-3 flex items-end justify-end p-2">
-          <i data-lucide="copy" class="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition"></i>
+    <!-- ================= HERO ================= -->
+    <section class="py-20 md:py-28 border-b border-slate-100">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-mint text-brand-teal font-medium text-xs rounded-full mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span>
+          Charte Graphique
         </div>
-        <h3 class="font-display font-semibold text-sm">Vert Teal</h3>
-        <p class="text-slate-500 text-xs">Boutons & Mots clés</p>
-        <p class="text-beduc-teal font-mono text-xs font-bold mt-2">#1D6B63</p>
+        
+        <h1 class="font-heading text-4xl sm:text-5xl font-bold text-brand-navy tracking-tight leading-[1.15]">
+          Apprends aujourd'hui. <br>
+          <span class="text-brand-teal">Choisis demain.</span>
+        </h1>
+        
+        <p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-2xl">
+          Documentation officielle de l'identité visuelle de B-Educ. Retrouvez ici la palette exacte, les règles typographiques et les composants d'interface.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#palette" class="bg-brand-teal hover:bg-brand-teal-dark text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors">
+            Explorer les couleurs
+          </a>
+          <a href="#composants" class="bg-slate-100 hover:bg-slate-200 text-brand-navy text-sm font-medium px-5 py-2.5 rounded-lg transition-colors">
+            Voir les composants
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PALETTE COULEURS ================= -->
+    <section id="palette" class="py-16 border-b border-slate-100">
+      <div class="mb-10">
+        <h2 class="font-heading text-2xl font-bold text-brand-navy">Couleurs de marque</h2>
+        <p class="text-slate-500 text-sm mt-1">Cliquez sur une couleur pour copier son code Hexadécimal.</p>
       </div>
 
-      <!-- Bleu Nuit Ink -->
-      <div data-aos="zoom-in" data-aos-delay="100" onclick="copyColor('#0F212E')" class="glass-card rounded-2xl p-4 cursor-pointer hover:border-beduc-navy transition group">
-        <div class="h-24 rounded-xl bg-[#0f212e] mb-3 flex items-end justify-end p-2">
-          <i data-lucide="copy" class="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition"></i>
-        </div>
-        <h3 class="font-display font-semibold text-sm">Bleu Nuit Ink</h3>
-        <p class="text-slate-500 text-xs">Titres & Textes principal</p>
-        <p class="text-beduc-navy font-mono text-xs font-bold mt-2">#0F212E</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        
+        <!-- Couleur 1 -->
+        <button onclick="copyHex('#1D6B63')" class="text-left group p-3 rounded-xl border border-slate-200 hover:border-slate-300 transition-all bg-white">
+          <div class="h-20 rounded-lg bg-[#1D6B63] mb-3 relative">
+            <span class="absolute bottom-2 right-2 text-white opacity-0 group-hover:opacity-100 transition-opacity text-xs bg-black/20 px-2 py-0.5 rounded">Copier</span>
+          </div>
+          <span class="block text-xs font-semibold text-slate-400 uppercase">Primaire</span>
+          <span class="block font-medium text-sm text-brand-navy">Vert Teal</span>
+          <span class="block text-xs font-mono text-brand-teal mt-1">#1D6B63</span>
+        </button>
+
+        <!-- Couleur 2 -->
+        <button onclick="copyHex('#0F212E')" class="text-left group p-3 rounded-xl border border-slate-200 hover:border-slate-300 transition-all bg-white">
+          <div class="h-20 rounded-lg bg-[#0F212E] mb-3 relative">
+            <span class="absolute bottom-2 right-2 text-white opacity-0 group-hover:opacity-100 transition-opacity text-xs bg-black/20 px-2 py-0.5 rounded">Copier</span>
+          </div>
+          <span class="block text-xs font-semibold text-slate-400 uppercase">Texte / Titres</span>
+          <span class="block font-medium text-sm text-brand-navy">Bleu Nuit</span>
+          <span class="block text-xs font-mono text-brand-teal mt-1">#0F212E</span>
+        </button>
+
+        <!-- Couleur 3 -->
+        <button onclick="copyHex('#E5AD42')" class="text-left group p-3 rounded-xl border border-slate-200 hover:border-slate-300 transition-all bg-white">
+          <div class="h-20 rounded-lg bg-[#E5AD42] mb-3 relative">
+            <span class="absolute bottom-2 right-2 text-white opacity-0 group-hover:opacity-100 transition-opacity text-xs bg-black/20 px-2 py-0.5 rounded">Copier</span>
+          </div>
+          <span class="block text-xs font-semibold text-slate-400 uppercase">Accent</span>
+          <span class="block font-medium text-sm text-brand-navy">Moutarde</span>
+          <span class="block text-xs font-mono text-brand-teal mt-1">#E5AD42</span>
+        </button>
+
+        <!-- Couleur 4 -->
+        <button onclick="copyHex('#DBEEE8')" class="text-left group p-3 rounded-xl border border-slate-200 hover:border-slate-300 transition-all bg-white">
+          <div class="h-20 rounded-lg bg-[#DBEEE8] mb-3 relative">
+            <span class="absolute bottom-2 right-2 text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity text-xs bg-black/5 px-2 py-0.5 rounded">Copier</span>
+          </div>
+          <span class="block text-xs font-semibold text-slate-400 uppercase">Secondaire</span>
+          <span class="block font-medium text-sm text-brand-navy">Menthe Douce</span>
+          <span class="block text-xs font-mono text-brand-teal mt-1">#DBEEE8</span>
+        </button>
+
+        <!-- Couleur 5 -->
+        <button onclick="copyHex('#FFFFFF')" class="text-left group p-3 rounded-xl border border-slate-200 hover:border-slate-300 transition-all bg-white">
+          <div class="h-20 rounded-lg bg-white border border-slate-200 mb-3 relative">
+            <span class="absolute bottom-2 right-2 text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity text-xs bg-black/5 px-2 py-0.5 rounded">Copier</span>
+          </div>
+          <span class="block text-xs font-semibold text-slate-400 uppercase">Fond Principal</span>
+          <span class="block font-medium text-sm text-brand-navy">Blanc Pure</span>
+          <span class="block text-xs font-mono text-brand-teal mt-1">#FFFFFF</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ================= COMPOSANTS REELS ================= -->
+    <section id="composants" class="py-16">
+      <div class="mb-10">
+        <h2 class="font-heading text-2xl font-bold text-brand-navy">Composants UI</h2>
+        <p class="text-slate-500 text-sm mt-1">Aperçu direct des cartes et boutons du site B-Educ.</p>
       </div>
 
-      <!-- Jaune Moutarde -->
-      <div data-aos="zoom-in" data-aos-delay="200" onclick="copyColor('#E5AD42')" class="glass-card rounded-2xl p-4 cursor-pointer hover:border-beduc-yellow transition group">
-        <div class="h-24 rounded-xl bg-[#e5ad42] mb-3 flex items-end justify-end p-2">
-          <i data-lucide="copy" class="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition"></i>
-        </div>
-        <h3 class="font-display font-semibold text-sm">Jaune Moutarde</h3>
-        <p class="text-slate-500 text-xs">Accents & Badges</p>
-        <p class="text-yellow-600 font-mono text-xs font-bold mt-2">#E5AD42</p>
-      </div>
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        
+        <!-- Reproduction carte originale -->
+        <div class="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm space-y-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Mon parcours</span>
+              <h3 class="font-heading text-lg font-bold text-brand-navy">Prêt pour aujourd'hui ?</h3>
+            </div>
+            <div class="w-9 h-9 rounded-full bg-brand-mint flex items-center justify-center text-brand-teal">
+              <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+            </div>
+          </div>
 
-      <!-- Mint Sage -->
-      <div data-aos="zoom-in" data-aos-delay="300" onclick="copyColor('#DBEEE8')" class="glass-card rounded-2xl p-4 cursor-pointer hover:border-beduc-teal transition group">
-        <div class="h-24 rounded-xl bg-[#dbeee8] mb-3 flex items-end justify-end p-2">
-          <i data-lucide="copy" class="w-4 h-4 text-beduc-teal opacity-0 group-hover:opacity-100 transition"></i>
-        </div>
-        <h3 class="font-display font-semibold text-sm">Menthe Douce</h3>
-        <p class="text-slate-500 text-xs">Fonds d'icônes & Tags</p>
-        <p class="text-beduc-teal font-mono text-xs font-bold mt-2">#DBEEE8</p>
-      </div>
-
-      <!-- Fond Crème -->
-      <div data-aos="zoom-in" data-aos-delay="400" onclick="copyColor('#FCFBF7')" class="glass-card rounded-2xl p-4 cursor-pointer border border-slate-200 group">
-        <div class="h-24 rounded-xl bg-[#fcfbf7] border border-slate-200 mb-3 flex items-end justify-end p-2">
-          <i data-lucide="copy" class="w-4 h-4 text-slate-600 opacity-0 group-hover:opacity-100 transition"></i>
-        </div>
-        <h3 class="font-display font-semibold text-sm">Fond Crème</h3>
-        <p class="text-slate-500 text-xs">Arrière-plan principal</p>
-        <p class="text-slate-600 font-mono text-xs font-bold mt-2">#FCFBF7</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ REPRODUCTION D'ELEMENTS UI ============ -->
-<section id="ui" class="px-5 sm:px-6 py-16">
-  <div class="max-w-6xl mx-auto">
-    <div data-aos="fade-up" class="mb-12">
-      <span class="text-beduc-teal text-xs font-bold uppercase tracking-widest">Composants</span>
-      <h2 class="font-display text-3xl font-bold text-beduc-navy mt-1">Exemples UI du Site B-Educ</h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-8 items-start">
-      <!-- Card Mon Parcours -->
-      <div data-aos="fade-right" class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xl shadow-slate-200/50 space-y-4">
-        <div class="flex items-center justify-between">
           <div>
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Mon parcours</span>
-            <h3 class="font-display text-lg font-bold text-beduc-navy">Prêt pour aujourd'hui ?</h3>
+            <div class="flex justify-between text-xs text-slate-500 mb-1.5">
+              <span>3</span>
+              <span>étapes à découvrir</span>
+            </div>
+            <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-brand-yellow w-1/3 rounded-full"></div>
+            </div>
           </div>
-          <div class="w-10 h-10 rounded-full bg-beduc-mint flex items-center justify-center text-beduc-teal">
-            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+
+          <div class="divide-y divide-slate-100 border border-slate-100 rounded-xl overflow-hidden">
+            <a href="#" class="flex items-center justify-between p-3.5 hover:bg-slate-50 transition-colors">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+                  <i data-lucide="zap" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="block text-[10px] font-bold text-slate-400 uppercase">Réviser</span>
+                  <span class="text-xs font-medium text-brand-navy">Lance un quiz adapté à ton niveau</span>
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            </a>
+
+            <a href="#" class="flex items-center justify-between p-3.5 hover:bg-slate-50 transition-colors">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-50 text-brand-teal flex items-center justify-center">
+                  <i data-lucide="book-open" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="block text-[10px] font-bold text-slate-400 uppercase">Approfondir</span>
+                  <span class="text-xs font-medium text-brand-navy">Trouve le bon cours ou la bonne épreuve</span>
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Progress bar -->
-        <div class="space-y-1">
-          <div class="flex justify-between text-xs text-slate-400">
-            <span>3</span>
-            <span>étapes à découvrir</span>
+        <!-- Boutons et éléments d'action -->
+        <div class="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm space-y-6">
+          <div>
+            <h3 class="font-heading text-sm font-semibold text-brand-navy mb-3">Boutons d'action</h3>
+            <div class="flex flex-wrap gap-3">
+              <button class="bg-brand-teal hover:bg-brand-teal-dark text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors inline-flex items-center gap-2">
+                Créer mon profil <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+              <button class="border border-slate-200 hover:bg-slate-50 text-brand-navy text-sm font-medium px-5 py-2.5 rounded-lg transition-colors">
+                Explorer la bibliothèque
+              </button>
+            </div>
           </div>
-          <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-            <div class="h-full bg-beduc-yellow w-1/3 rounded-full"></div>
+
+          <div class="pt-4 border-t border-slate-100">
+            <h3 class="font-heading text-sm font-semibold text-brand-navy mb-3">Badges & Tags</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-brand-mint text-brand-teal text-xs font-medium px-2.5 py-1 rounded-md">Orientation</span>
+              <span class="bg-amber-50 text-amber-700 text-xs font-medium px-2.5 py-1 rounded-md">Quiz Interactif</span>
+              <span class="bg-slate-100 text-slate-600 text-xs font-medium px-2.5 py-1 rounded-md">Exercices</span>
+            </div>
           </div>
         </div>
 
-        <!-- Section item -->
-        <div class="flex items-center gap-4 p-3 rounded-2xl border border-slate-100 hover:border-slate-200 bg-slate-50/50 transition">
-          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-            <i data-lucide="zap" class="w-5 h-5"></i>
-          </div>
-          <div class="flex-1">
-            <span class="text-[10px] font-bold text-slate-400 uppercase">Réviser</span>
-            <p class="text-xs font-semibold text-beduc-navy">Lance un quiz adapté à ton niveau</p>
-          </div>
-          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
-        </div>
       </div>
+    </section>
 
-      <!-- Boutons officiels -->
-      <div data-aos="fade-left" class="space-y-6">
-        <div class="glass-card rounded-2xl p-6 space-y-4">
-          <h3 class="font-display font-semibold text-sm text-beduc-navy">Style des Boutons Officiels</h3>
-          <div class="flex flex-wrap gap-4">
-            <button class="btn-teal font-medium px-6 py-3 rounded-xl text-sm flex items-center gap-2">
-              Créer mon profil <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </button>
-            <button class="bg-white border border-slate-200 text-beduc-navy font-medium px-6 py-3 rounded-xl text-sm hover:bg-slate-50 transition">
-              Explorer la bibliothèque
-            </button>
-          </div>
-        </div>
-      </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-slate-100 py-8 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center text-xs text-slate-400">
+      &copy; B-Educ — Charte graphique officielle.
     </div>
+  </footer>
+
+  <!-- Toast de confirmation -->
+  <div id="toast" class="toast bg-brand-navy text-white text-xs px-4 py-2.5 rounded-lg shadow-lg flex items-center gap-2">
+    <i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i>
+    <span id="toast-text">Code couleur copié</span>
   </div>
-</section>
 
-<!-- Toast Notification -->
-<div id="toast" class="toast bg-beduc-navy text-white px-5 py-3 rounded-xl text-sm flex items-center gap-2 shadow-2xl">
-  <i data-lucide="check-circle" class="w-4 h-4 text-beduc-yellow"></i>
-  <span id="toast-message">Code couleur copié !</span>
-</div>
+  <script>
+    lucide.createIcons();
 
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
-<script>
-  if (typeof AOS !== 'undefined') AOS.init({ duration: 700, once: true });
-  if (typeof lucide !== 'undefined') lucide.createIcons();
-
-  function copyColor(hex) {
-    navigator.clipboard.writeText(hex).then(() => {
+    function copyHex(hex) {
+      navigator.clipboard.writeText(hex);
       const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toast-message');
-      toastMsg.textContent = `Code ${hex} copié dans le presse-papier !`;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2500);
-    });
-  }
-</script>
+      const toastText = document.getElementById('toast-text');
+      
+      toastText.textContent = `Code ${hex} copié dans le presse-papier !`;
+      toast.classList.add('active');
+      
+      setTimeout(() => {
+        toast.classList.remove('active');
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
