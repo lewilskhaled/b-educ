@@ -13,10 +13,14 @@
     theme: {
       extend: {
         colors: {
-          'ink': '#0b0f1e',
-          'brand-blue': '#2563eb',
-          'brand-cyan': '#06b6d4',
-          'brand-purple': '#8b5cf6',
+          'beduc-bg': '#fcfbf7',
+          'beduc-card': '#ffffff',
+          'beduc-teal': '#1d6b63',
+          'beduc-teal-dark': '#144c46',
+          'beduc-navy': '#0f212e',
+          'beduc-yellow': '#e5ad42',
+          'beduc-mint': '#dbeee8',
+          'beduc-mint-light': '#eef7f4',
         },
         fontFamily: {
           display: ['"Space Grotesk"', 'sans-serif'],
@@ -38,62 +42,29 @@
 <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
 
 <style>
-  :root {
-    --glow-x: 50%;
-    --glow-y: 30%;
-  }
   * { scroll-behavior: smooth; }
   body {
-    background-color: #0b0f1e;
-    background-image:
-      radial-gradient(circle at 15% 0%, rgba(37,99,235,0.18), transparent 40%),
-      radial-gradient(circle at 85% 20%, rgba(6,182,212,0.12), transparent 35%),
-      radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: auto, auto, 26px 26px;
+    background-color: #fcfbf7;
     font-family: 'Inter', sans-serif;
-    color: #e2e8f0;
+    color: #0f212e;
   }
   h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
 
-  #spotlight {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(600px circle at var(--glow-x) var(--glow-y), rgba(37,99,235,0.15), transparent 60%);
-    transition: background 0.15s ease;
+  .glass-card {
+    background: #ffffff;
+    border: 1px solid rgba(15, 33, 46, 0.08);
+    box-shadow: 0 10px 30px -10px rgba(15, 33, 46, 0.05);
   }
 
-  .glass {
-    background: rgba(255,255,255,0.035);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255,255,255,0.08);
+  .btn-teal {
+    background-color: #1d6b63;
+    color: #ffffff;
+    transition: all 0.25s ease;
   }
-
-  .gradient-text {
-    background: linear-gradient(90deg, #60a5fa 0%, #38bdf8 50%, #a78bfa 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .card-hover {
-    transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color 0.4s ease, box-shadow 0.4s ease;
-  }
-  .card-hover:hover {
-    transform: translateY(-4px);
-    border-color: rgba(96,165,250,0.4);
-    box-shadow: 0 15px 40px -15px rgba(37,99,235,0.3);
-  }
-
-  .btn-primary {
-    background: linear-gradient(90deg, #2563eb, #06b6d4);
-    transition: box-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
-  }
-  .btn-primary:hover {
-    box-shadow: 0 0 35px -5px rgba(6,182,212,0.5);
+  .btn-teal:hover {
+    background-color: #144c46;
     transform: translateY(-2px);
-    filter: brightness(1.08);
+    box-shadow: 0 10px 20px -5px rgba(29, 107, 99, 0.3);
   }
 
   .toast {
@@ -114,310 +85,188 @@
 <body class="font-body antialiased">
 
 <!-- ============ NAVBAR ============ -->
-<header class="fixed top-0 inset-x-0 z-50">
-  <nav class="mx-auto max-w-6xl mt-4 px-5 sm:px-6 glass rounded-2xl flex items-center justify-between h-16">
-    <a href="#top" class="font-display text-2xl font-bold gradient-text flex items-center gap-2">
-      <i data-lucide="graduation-cap" class="w-6 h-6 text-blue-400"></i> B-Educ
+<header class="fixed top-0 inset-x-0 z-50 bg-[#fcfbf7]/80 backdrop-blur-md border-b border-slate-200/60">
+  <nav class="mx-auto max-w-6xl px-5 sm:px-6 flex items-center justify-between h-20">
+    <a href="#top" class="font-display text-2xl font-bold text-beduc-teal flex items-center gap-2">
+      <span class="bg-beduc-teal text-white p-1.5 rounded-lg text-lg leading-none">b</span>-educ
     </a>
 
-    <div class="hidden md:flex items-center gap-8 text-sm text-slate-300">
-      <a href="#brand" class="hover:text-white transition">Marque</a>
-      <a href="#logo" class="hover:text-white transition">Logo</a>
-      <a href="#couleurs" class="hover:text-white transition">Couleurs</a>
-      <a href="#typographie" class="hover:text-white transition">Typographie</a>
-      <a href="#ui" class="hover:text-white transition">Composants UI</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-beduc-navy">
+      <a href="#brand" class="hover:text-beduc-teal transition">Marque</a>
+      <a href="#logo" class="hover:text-beduc-teal transition">Logo</a>
+      <a href="#couleurs" class="hover:text-beduc-teal transition">Couleurs</a>
+      <a href="#typographie" class="hover:text-beduc-teal transition">Typographie</a>
+      <a href="#ui" class="hover:text-beduc-teal transition">Composants UI</a>
     </div>
 
-    <a href="https://b-educ.com" target="_blank" rel="noopener" class="hidden sm:inline-flex btn-primary text-white text-sm font-medium px-5 py-2.5 rounded-xl items-center gap-2">
-      Visiter B-Educ <i data-lucide="external-link" class="w-4 h-4"></i>
+    <a href="https://b-educ.com" target="_blank" rel="noopener" class="btn-teal text-sm font-medium px-5 py-2.5 rounded-xl inline-flex items-center gap-2">
+      Visiter le site <i data-lucide="external-link" class="w-4 h-4"></i>
     </a>
   </nav>
 </header>
 
 <!-- ============ HERO ============ -->
-<section id="top" class="relative min-h-[75vh] flex items-center pt-32 pb-16 px-5 sm:px-6 overflow-hidden">
-  <div id="spotlight"></div>
-
-  <div class="relative max-w-4xl mx-auto text-center">
-    <div data-aos="fade-down" class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs text-blue-300 mb-8">
-      <i data-lucide="book-open-check" class="w-4 h-4 text-cyan-400"></i>
-      Charte Graphique Officielle v1.0
+<section id="top" class="pt-36 pb-20 px-5 sm:px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <div data-aos="fade-down" class="inline-flex items-center gap-2 bg-beduc-mint text-beduc-teal font-semibold rounded-full px-4 py-1.5 text-xs mb-6">
+      <span class="w-2 h-2 rounded-full bg-beduc-teal"></span>
+      Charte Graphique Officielle
     </div>
 
-    <h1 data-aos="fade-up" data-aos-delay="100" class="font-display text-4xl sm:text-6xl font-bold leading-tight">
-      Identité visuelle & règles de marque <br>
-      pour <span class="gradient-text">B-Educ</span>
+    <h1 data-aos="fade-up" data-aos-delay="100" class="font-display text-4xl sm:text-6xl font-bold text-beduc-navy leading-tight">
+      Apprends aujourd'hui. <br>
+      <span class="text-beduc-teal">Choisis demain.</span>
     </h1>
 
-    <p data-aos="fade-up" data-aos-delay="200" class="mt-6 text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
-      Ce guide regroupe les standards visuels, la typographie, la palette de couleurs et les règles d'utilisation garantissant la cohérence de B-Educ sur l'ensemble des plateformes numériques.
+    <p data-aos="fade-up" data-aos-delay="200" class="mt-6 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+      Guide complet des règles visuelles, de la palette de couleurs, des typographies et de l'expérience utilisateur de B-Educ.
     </p>
 
     <div data-aos="fade-up" data-aos-delay="300" class="mt-8 flex flex-wrap items-center justify-center gap-4">
-      <a href="#logo" class="btn-primary text-white font-medium px-6 py-3 rounded-xl text-sm">Explorer le guide</a>
-      <a href="#couleurs" class="glass text-slate-200 font-medium px-6 py-3 rounded-xl text-sm hover:bg-white/10 transition">Palette de couleurs</a>
+      <a href="#couleurs" class="btn-teal font-medium px-6 py-3 rounded-xl text-sm">Voir la palette exacte</a>
+      <a href="#ui" class="bg-white border border-slate-200 text-beduc-navy font-medium px-6 py-3 rounded-xl text-sm hover:bg-slate-50 transition">Explorer les composants</a>
     </div>
   </div>
 </section>
 
-<!-- ============ MARQUE & ADN ============ -->
-<section id="brand" class="px-5 sm:px-6 py-16">
+<!-- ============ COULEURS REELLES ============ -->
+<section id="couleurs" class="px-5 sm:px-6 py-16 bg-white border-y border-slate-200/60">
   <div class="max-w-6xl mx-auto">
     <div data-aos="fade-up" class="mb-12">
-      <span class="text-blue-400 text-xs font-semibold uppercase tracking-widest">Fondations</span>
-      <h2 class="font-display text-3xl font-bold mt-2">Vision & ADN de Marque</h2>
+      <div class="w-12 h-1 bg-beduc-yellow mb-3"></div>
+      <span class="text-beduc-teal text-xs font-bold uppercase tracking-widest">Couleurs Officielles</span>
+      <h2 class="font-display text-3xl font-bold text-beduc-navy mt-1">Palette Extraite du Site</h2>
+      <p class="text-slate-500 text-sm mt-2">Cliquez sur une carte pour copier le code HEX.</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      <div data-aos="fade-up" class="glass rounded-2xl p-6">
-        <div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-400 mb-4">
-          <i data-lucide="target" class="w-5 h-5"></i>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+      <!-- Vert Teal -->
+      <div data-aos="zoom-in" onclick="copyColor('#1D6B63')" class="glass-card rounded-2xl p-4 cursor-pointer hover:border-beduc-teal transition group">
+        <div class="h-24 rounded-xl bg-[#1d6b63] mb-3 flex items-end justify-end p-2">
+          <i data-lucide="copy" class="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition"></i>
         </div>
-        <h3 class="font-display text-lg font-semibold">Mission</h3>
-        <p class="text-slate-400 text-sm mt-2">Rendre la formation et les ressources éducatives numériques accessibles, intuitives et captivantes pour tous les apprenants.</p>
+        <h3 class="font-display font-semibold text-sm">Vert Teal</h3>
+        <p class="text-slate-500 text-xs">Boutons & Mots clés</p>
+        <p class="text-beduc-teal font-mono text-xs font-bold mt-2">#1D6B63</p>
       </div>
 
-      <div data-aos="fade-up" data-aos-delay="100" class="glass rounded-2xl p-6">
-        <div class="w-10 h-10 rounded-xl bg-cyan-500/15 flex items-center justify-center text-cyan-400 mb-4">
-          <i data-lucide="sparkles" class="w-5 h-5"></i>
+      <!-- Bleu Nuit Ink -->
+      <div data-aos="zoom-in" data-aos-delay="100" onclick="copyColor('#0F212E')" class="glass-card rounded-2xl p-4 cursor-pointer hover:border-beduc-navy transition group">
+        <div class="h-24 rounded-xl bg-[#0f212e] mb-3 flex items-end justify-end p-2">
+          <i data-lucide="copy" class="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition"></i>
         </div>
-        <h3 class="font-display text-lg font-semibold">Valeurs</h3>
-        <p class="text-slate-400 text-sm mt-2">Clarté, modernité, accessibilité et innovation continue au service de la réussite académique et professionnelle.</p>
+        <h3 class="font-display font-semibold text-sm">Bleu Nuit Ink</h3>
+        <p class="text-slate-500 text-xs">Titres & Textes principal</p>
+        <p class="text-beduc-navy font-mono text-xs font-bold mt-2">#0F212E</p>
       </div>
 
-      <div data-aos="fade-up" data-aos-delay="200" class="glass rounded-2xl p-6">
-        <div class="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center text-purple-400 mb-4">
-          <i data-lucide="message-square" class="w-5 h-5"></i>
+      <!-- Jaune Moutarde -->
+      <div data-aos="zoom-in" data-aos-delay="200" onclick="copyColor('#E5AD42')" class="glass-card rounded-2xl p-4 cursor-pointer hover:border-beduc-yellow transition group">
+        <div class="h-24 rounded-xl bg-[#e5ad42] mb-3 flex items-end justify-end p-2">
+          <i data-lucide="copy" class="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition"></i>
         </div>
-        <h3 class="font-display text-lg font-semibold">Ton & Voix</h3>
-        <p class="text-slate-400 text-sm mt-2">Inspirant, professionnel, clair et bienveillant. La communication va droit au but sans jargon inutile.</p>
+        <h3 class="font-display font-semibold text-sm">Jaune Moutarde</h3>
+        <p class="text-slate-500 text-xs">Accents & Badges</p>
+        <p class="text-yellow-600 font-mono text-xs font-bold mt-2">#E5AD42</p>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ LOGO ============ -->
-<section id="logo" class="px-5 sm:px-6 py-16">
-  <div class="max-w-6xl mx-auto">
-    <div data-aos="fade-up" class="mb-12">
-      <span class="text-blue-400 text-xs font-semibold uppercase tracking-widest">Identité Visuelle</span>
-      <h2 class="font-display text-3xl font-bold mt-2">Le Logo B-Educ</h2>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-8 mb-8">
-      <!-- Dark Version -->
-      <div data-aos="fade-right" class="glass rounded-2xl p-8 flex flex-col items-center justify-center min-h-[220px] text-center">
-        <div class="font-display text-4xl font-bold gradient-text flex items-center gap-3">
-          <i data-lucide="graduation-cap" class="w-10 h-10 text-blue-400"></i> B-Educ
+      <!-- Mint Sage -->
+      <div data-aos="zoom-in" data-aos-delay="300" onclick="copyColor('#DBEEE8')" class="glass-card rounded-2xl p-4 cursor-pointer hover:border-beduc-teal transition group">
+        <div class="h-24 rounded-xl bg-[#dbeee8] mb-3 flex items-end justify-end p-2">
+          <i data-lucide="copy" class="w-4 h-4 text-beduc-teal opacity-0 group-hover:opacity-100 transition"></i>
         </div>
-        <span class="text-slate-500 text-xs mt-6">Version principale (Sur fond sombre)</span>
+        <h3 class="font-display font-semibold text-sm">Menthe Douce</h3>
+        <p class="text-slate-500 text-xs">Fonds d'icônes & Tags</p>
+        <p class="text-beduc-teal font-mono text-xs font-bold mt-2">#DBEEE8</p>
       </div>
 
-      <!-- Light Version Preview -->
-      <div data-aos="fade-left" class="bg-slate-100 rounded-2xl p-8 flex flex-col items-center justify-center min-h-[220px] text-center text-slate-900">
-        <div class="font-display text-4xl font-bold flex items-center gap-3 text-slate-900">
-          <i data-lucide="graduation-cap" class="w-10 h-10 text-blue-600"></i> B-Educ
+      <!-- Fond Crème -->
+      <div data-aos="zoom-in" data-aos-delay="400" onclick="copyColor('#FCFBF7')" class="glass-card rounded-2xl p-4 cursor-pointer border border-slate-200 group">
+        <div class="h-24 rounded-xl bg-[#fcfbf7] border border-slate-200 mb-3 flex items-end justify-end p-2">
+          <i data-lucide="copy" class="w-4 h-4 text-slate-600 opacity-0 group-hover:opacity-100 transition"></i>
         </div>
-        <span class="text-slate-500 text-xs mt-6">Version secondaire (Sur fond clair)</span>
-      </div>
-    </div>
-
-    <!-- Usage rules -->
-    <div data-aos="fade-up" class="glass rounded-2xl p-6 grid md:grid-cols-2 gap-6">
-      <div>
-        <h3 class="font-display font-semibold text-emerald-400 flex items-center gap-2">
-          <i data-lucide="check-circle-2" class="w-5 h-5"></i> À faire (Dos)
-        </h3>
-        <ul class="text-slate-400 text-sm mt-3 space-y-2 list-disc list-inside">
-          <li>Conserver un espace de dégagement minimal de 20px.</li>
-          <li>Utiliser la version dégradée sur les fonds sombres.</li>
-          <li>Maintenir la lisibilité des icônes à toutes les échelles.</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-display font-semibold text-rose-400 flex items-center gap-2">
-          <i data-lucide="x-circle" class="w-5 h-5"></i> À ne pas faire (Don'ts)
-        </h3>
-        <ul class="text-slate-400 text-sm mt-3 space-y-2 list-disc list-inside">
-          <li>Ne pas déformer ou étirer les proportions du logo.</li>
-          <li>Ne pas changer les couleurs principales sans validation.</li>
-          <li>Ne pas ajouter d'ombres portées excessives ou d'effets 3D.</li>
-        </ul>
+        <h3 class="font-display font-semibold text-sm">Fond Crème</h3>
+        <p class="text-slate-500 text-xs">Arrière-plan principal</p>
+        <p class="text-slate-600 font-mono text-xs font-bold mt-2">#FCFBF7</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ COULEURS ============ -->
-<section id="couleurs" class="px-5 sm:px-6 py-16">
-  <div class="max-w-6xl mx-auto">
-    <div data-aos="fade-up" class="mb-12">
-      <span class="text-blue-400 text-xs font-semibold uppercase tracking-widest">Palette Officielle</span>
-      <h2 class="font-display text-3xl font-bold mt-2">Système de Couleurs</h2>
-      <p class="text-slate-400 text-sm mt-2">Cliquez sur une carte pour copier le code HEX dans votre presse-papier.</p>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Color 1 -->
-      <div data-aos="zoom-in" onclick="copyColor('#2563eb')" class="glass card-hover rounded-2xl p-5 cursor-pointer group">
-        <div class="h-28 rounded-xl bg-blue-600 mb-4 shadow-lg flex items-end justify-end p-3">
-          <i data-lucide="copy" class="w-4 h-4 text-white/70 opacity-0 group-hover:opacity-100 transition"></i>
-        </div>
-        <h3 class="font-display font-semibold">Bleu Éducatif</h3>
-        <p class="text-slate-400 text-xs mt-1">Couleur primaire · Confiance</p>
-        <p class="text-blue-400 font-mono text-xs mt-3">#2563EB</p>
-      </div>
-
-      <!-- Color 2 -->
-      <div data-aos="zoom-in" data-aos-delay="100" onclick="copyColor('#06b6d4')" class="glass card-hover rounded-2xl p-5 cursor-pointer group">
-        <div class="h-28 rounded-xl bg-cyan-500 mb-4 shadow-lg flex items-end justify-end p-3">
-          <i data-lucide="copy" class="w-4 h-4 text-white/70 opacity-0 group-hover:opacity-100 transition"></i>
-        </div>
-        <h3 class="font-display font-semibold">Cyan Énergie</h3>
-        <p class="text-slate-400 text-xs mt-1">Couleur secondaire · Accent</p>
-        <p class="text-cyan-400 font-mono text-xs mt-3">#06B6D4</p>
-      </div>
-
-      <!-- Color 3 -->
-      <div data-aos="zoom-in" data-aos-delay="200" onclick="copyColor('#0b0f1e')" class="glass card-hover rounded-2xl p-5 cursor-pointer group">
-        <div class="h-28 rounded-xl bg-[#0b0f1e] border border-white/10 mb-4 shadow-lg flex items-end justify-end p-3">
-          <i data-lucide="copy" class="w-4 h-4 text-white/70 opacity-0 group-hover:opacity-100 transition"></i>
-        </div>
-        <h3 class="font-display font-semibold">Ink Dark</h3>
-        <p class="text-slate-400 text-xs mt-1">Fond principal · Modernité</p>
-        <p class="text-slate-400 font-mono text-xs mt-3">#0B0F1E</p>
-      </div>
-
-      <!-- Color 4 -->
-      <div data-aos="zoom-in" data-aos-delay="300" onclick="copyColor('#f8fafc')" class="glass card-hover rounded-2xl p-5 cursor-pointer group">
-        <div class="h-28 rounded-xl bg-slate-50 mb-4 shadow-lg flex items-end justify-end p-3">
-          <i data-lucide="copy" class="w-4 h-4 text-slate-700 opacity-0 group-hover:opacity-100 transition"></i>
-        </div>
-        <h3 class="font-display font-semibold text-slate-200">Blanc Pur / Soft</h3>
-        <p class="text-slate-400 text-xs mt-1">Texte & Contrastes</p>
-        <p class="text-slate-300 font-mono text-xs mt-3">#F8FAFC</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TYPOGRAPHIE ============ -->
-<section id="typographie" class="px-5 sm:px-6 py-16">
-  <div class="max-w-6xl mx-auto">
-    <div data-aos="fade-up" class="mb-12">
-      <span class="text-blue-400 text-xs font-semibold uppercase tracking-widest">Typographie</span>
-      <h2 class="font-display text-3xl font-bold mt-2">Hiérarchie Textuelle</h2>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-8">
-      <!-- Title Font -->
-      <div data-aos="fade-right" class="glass rounded-2xl p-6">
-        <span class="text-xs text-blue-400 font-mono">Font Display — Space Grotesk</span>
-        <div class="mt-4 space-y-4">
-          <div>
-            <span class="text-xs text-slate-500">Titre H1 (36px / Bold)</span>
-            <p class="font-display text-3xl font-bold text-white">L'éducation de demain</p>
-          </div>
-          <div>
-            <span class="text-xs text-slate-500">Titre H2 (24px / SemiBold)</span>
-            <p class="font-display text-xl font-semibold text-slate-200">Apprendre sans frontières</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Body Font -->
-      <div data-aos="fade-left" class="glass rounded-2xl p-6">
-        <span class="text-xs text-cyan-400 font-mono">Font Body — Inter</span>
-        <div class="mt-4 space-y-4">
-          <div>
-            <span class="text-xs text-slate-500">Corps de texte (16px / Regular)</span>
-            <p class="text-slate-300 text-base leading-relaxed">
-              B-Educ propose une expérience d'apprentissage fluide, intuitive et accessible. Chaque composant est optimisé pour la clarté.
-            </p>
-          </div>
-          <div>
-            <span class="text-xs text-slate-500">Légende / Note (12px / Medium)</span>
-            <p class="text-slate-400 text-xs">© 2026 B-Educ. Tous droits réservés.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ COMPOSANTS UI ============ -->
+<!-- ============ REPRODUCTION D'ELEMENTS UI ============ -->
 <section id="ui" class="px-5 sm:px-6 py-16">
   <div class="max-w-6xl mx-auto">
     <div data-aos="fade-up" class="mb-12">
-      <span class="text-blue-400 text-xs font-semibold uppercase tracking-widest">UI Kit</span>
-      <h2 class="font-display text-3xl font-bold mt-2">Composants d'Interface</h2>
+      <span class="text-beduc-teal text-xs font-bold uppercase tracking-widest">Composants</span>
+      <h2 class="font-display text-3xl font-bold text-beduc-navy mt-1">Exemples UI du Site B-Educ</h2>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Buttons -->
-      <div data-aos="fade-up" class="glass rounded-2xl p-6 space-y-4">
-        <h3 class="font-display font-semibold text-sm text-slate-400">Boutons</h3>
-        <button class="btn-primary w-full text-white text-sm font-medium py-2.5 rounded-xl">Bouton Primaire</button>
-        <button class="w-full glass text-slate-200 text-sm font-medium py-2.5 rounded-xl hover:bg-white/10 transition">Bouton Secondaire</button>
-      </div>
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <!-- Card Mon Parcours -->
+      <div data-aos="fade-right" class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xl shadow-slate-200/50 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Mon parcours</span>
+            <h3 class="font-display text-lg font-bold text-beduc-navy">Prêt pour aujourd'hui ?</h3>
+          </div>
+          <div class="w-10 h-10 rounded-full bg-beduc-mint flex items-center justify-center text-beduc-teal">
+            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+          </div>
+        </div>
 
-      <!-- Badges -->
-      <div data-aos="fade-up" data-aos-delay="100" class="glass rounded-2xl p-6 space-y-4">
-        <h3 class="font-display font-semibold text-sm text-slate-400">Badges & Tags</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="bg-blue-500/15 border border-blue-500/30 text-blue-300 text-xs px-3 py-1 rounded-full">Nouveau</span>
-          <span class="bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs px-3 py-1 rounded-full">Formation</span>
-          <span class="bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs px-3 py-1 rounded-full">Certifié</span>
+        <!-- Progress bar -->
+        <div class="space-y-1">
+          <div class="flex justify-between text-xs text-slate-400">
+            <span>3</span>
+            <span>étapes à découvrir</span>
+          </div>
+          <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+            <div class="h-full bg-beduc-yellow w-1/3 rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- Section item -->
+        <div class="flex items-center gap-4 p-3 rounded-2xl border border-slate-100 hover:border-slate-200 bg-slate-50/50 transition">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+            <i data-lucide="zap" class="w-5 h-5"></i>
+          </div>
+          <div class="flex-1">
+            <span class="text-[10px] font-bold text-slate-400 uppercase">Réviser</span>
+            <p class="text-xs font-semibold text-beduc-navy">Lance un quiz adapté à ton niveau</p>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
         </div>
       </div>
 
-      <!-- Input -->
-      <div data-aos="fade-up" data-aos-delay="200" class="glass rounded-2xl p-6 space-y-3">
-        <h3 class="font-display font-semibold text-sm text-slate-400">Champs de saisie</h3>
-        <input type="text" placeholder="Entrez votre email..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-blue-400 transition">
+      <!-- Boutons officiels -->
+      <div data-aos="fade-left" class="space-y-6">
+        <div class="glass-card rounded-2xl p-6 space-y-4">
+          <h3 class="font-display font-semibold text-sm text-beduc-navy">Style des Boutons Officiels</h3>
+          <div class="flex flex-wrap gap-4">
+            <button class="btn-teal font-medium px-6 py-3 rounded-xl text-sm flex items-center gap-2">
+              Créer mon profil <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <button class="bg-white border border-slate-200 text-beduc-navy font-medium px-6 py-3 rounded-xl text-sm hover:bg-slate-50 transition">
+              Explorer la bibliothèque
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="px-6 py-10 border-t border-white/10 mt-12">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-    <a href="#top" class="font-display text-xl font-bold gradient-text flex items-center gap-2">
-      <i data-lucide="graduation-cap" class="w-5 h-5 text-blue-400"></i> B-Educ
-    </a>
-    <p class="text-xs text-slate-500">© 2026 B-Educ — Charte graphique conçue pour GitHub Pages & Vercel.</p>
-  </div>
-</footer>
-
 <!-- Toast Notification -->
-<div id="toast" class="toast glass px-5 py-3 rounded-xl border border-blue-500/30 text-slate-100 text-sm flex items-center gap-2 shadow-2xl">
-  <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i>
+<div id="toast" class="toast bg-beduc-navy text-white px-5 py-3 rounded-xl text-sm flex items-center gap-2 shadow-2xl">
+  <i data-lucide="check-circle" class="w-4 h-4 text-beduc-yellow"></i>
   <span id="toast-message">Code couleur copié !</span>
 </div>
 
-<!-- ============ SCRIPTS ============ -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
 <script>
-  if (typeof AOS !== 'undefined') {
-    AOS.init({ duration: 700, once: true, offset: 60 });
-  }
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
+  if (typeof AOS !== 'undefined') AOS.init({ duration: 700, once: true });
+  if (typeof lucide !== 'undefined') lucide.createIcons();
 
-  // Spotlight effect
-  const hero = document.getElementById('top');
-  const spotlight = document.getElementById('spotlight');
-  hero.addEventListener('mousemove', (e) => {
-    const rect = hero.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    spotlight.style.setProperty('--glow-x', x + '%');
-    spotlight.style.setProperty('--glow-y', y + '%');
-  });
-
-  // Copy Color HEX to Clipboard
   function copyColor(hex) {
     navigator.clipboard.writeText(hex).then(() => {
       const toast = document.getElementById('toast');
